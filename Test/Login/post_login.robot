@@ -4,7 +4,6 @@ Resource    ./keywords/LoginKW.robot
 Force Tags    @regression
 
 *** Test Cases ***
-
 Login com sucesso
     [Tags]    @Login
     Login    beltrano@qa.com.br    teste
