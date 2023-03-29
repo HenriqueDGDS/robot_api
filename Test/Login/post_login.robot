@@ -1,15 +1,16 @@
 *** Settings ***
 Resource    ../base.robot
 Resource    ./keywords/LoginKW.robot
+Resource    ../Commons/CommonKW.robot
 Force Tags    @regression
 
 *** Test Cases ***
 Login com sucesso
     [Tags]    @Login
-    Login    beltrano@qa.com.br    teste
-    Should Be Equal As Strings    ${response.status_code}    200
+    Pegar Token
     Should Be Equal As Strings    ${response.json()['message']}    Login realizado com sucesso
-
+    Set Global Variable           ${token}        ${RESPONSE.json()['authorization']}
+    
 Login sem sucesso
     [Tags]    @Login
     Login    emailinvalido@qa.com    aeugs
